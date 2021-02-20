@@ -22,11 +22,11 @@ Webp images generated after redirect to original source
 How to install ?
 ++++++++++++++++
 
-Go to folder ``Resources/WebpRedirectToOriginalAndConvertInBackground``
-
-1. Copy part of htaccess from there to your htaccess or vhost configuration.
-2. Copy the example ``webp-on-demand.php`` to your DocumentRoot folder. Change the path to vendor folder to your needs.
-3. Your webp files will be stored in separate folder in your DocumentRoot folder. By default its ``__processed__/webp-images``.
+1. ``composer install sourcebroker/webp``
+2. Go to folder ``vendor/sourcebroker/webp/Resources/WebpRedirectToOriginalAndConvertInBackground``
+3. Copy part of htaccess from there to your htaccess or vhost configuration.
+4. Copy the example ``webp-on-demand.php`` to your DocumentRoot folder. Change the path to vendor folder to your needs.
+5. Your webp files will be stored in separate folder in your DocumentRoot folder. By default its ``__processed__/webp-images``.
    You can change this folder by replacing ``__processed__/webp-images`` in ``.htaccess`` file and in ``webp-on-demand.php`` file.
 
 How to test?
