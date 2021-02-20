@@ -6,7 +6,8 @@
     "webp"
   ],
   "require": {
-    "php": ">=7.0"
+    "php": ">=7.0",
+    "rosell-dk/webp-convert": "^2.4"
   },
   "authors": [
     {
