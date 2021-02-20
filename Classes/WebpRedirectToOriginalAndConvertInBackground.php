@@ -8,7 +8,7 @@ class WebpRedirectToOriginalAndConvertInBackground
      * @var array
      */
     private $options = [
-        'folderInDocumentRootToSaveWebp' => '/__processed__/webp-images',
+        'folderInDocumentRootToSaveWebp' => '/_processed_/webp-images',
         'lockFolderMode'                 => 0777,
     ];
 
