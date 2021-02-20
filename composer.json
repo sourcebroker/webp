@@ -1,0 +1,22 @@
+{
+  "name": "sourcebroker/webp",
+  "description": "Webp converter scenarios",
+  "license": "MIT",
+  "keywords": [
+    "webp"
+  ],
+  "require": {
+    "php": ">=7.0"
+  },
+  "authors": [
+    {
+      "name": "Krystian Szymukowicz",
+      "email": "k.szymukowicz@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "SourceBroker\\Webp\\": "Classes/"
+    }
+  }
+}

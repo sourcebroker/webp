@@ -1,0 +1,35 @@
+###
+### NOTICE!!!
+###  Replace "/__processed__/webp-images" with the path in DocumentRoot where you want the webp images to be stored.
+### This value must be the same as "folderInDocumentRootToSaveWebp" in webp-on-demand.php
+###
+
+
+
+###
+### WEBP support start
+###
+AddType image/webp .webp
+
+<IfModule mod_rewrite.c>
+# Serve webp image if already exists
+RewriteCond %{HTTP_ACCEPT} image/webp
+RewriteCond %{DOCUMENT_ROOT}/__processed__/webp-images/$1.$2.webp -f
+RewriteRule ^\/?(.*)\.(jpe?g|png)$ /__processed__/webp-images/$1.$2.webp [NC,T=image/webp,E=webp,L]
+# Add info for browsers and proxies that jpg/png images caching must vary on "Accept" header sended by browser.
+# Check that headers retuned by png/jpg have "vary: Accept"
+<IfModule mod_headers.c>
+Header append Vary Accept env=REDIRECT_webp
+Header append Vary Accept env=webp
+</IfModule>
+
+# If webp does not exists yet then start processing and make redirect to original source with "?processing" parameter
+RewriteCond %{HTTP_ACCEPT} image/webp
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_FILENAME}.webp !-f
+RewriteCond %{QUERY_STRING} !(^|&)processing(&|$)
+RewriteRule ^(.*)\.(jpe?g|png)$ webp-on-demand.php?secret=160377682374520 [NC,L]
+</IfModule>
+###
+### WEBP support end
+###
