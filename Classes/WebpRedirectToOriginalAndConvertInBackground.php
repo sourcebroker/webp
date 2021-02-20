@@ -12,7 +12,7 @@ class WebpRedirectToOriginalAndConvertInBackground
         'lockFolderMode'                 => 0777,
     ];
 
-    public function __construct($userOptions)
+    public function __construct($userOptions = [])
     {
         $this->options = array_merge($this->options, $userOptions);
     }
