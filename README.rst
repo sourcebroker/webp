@@ -22,7 +22,7 @@ Webp images generated after redirect to original source
 How to install ?
 ++++++++++++++++
 
-1. ``composer install sourcebroker/webp``
+1. ``composer req sourcebroker/webp``
 2. Go to folder ``vendor/sourcebroker/webp/Resources/WebpRedirectToOriginalAndConvertInBackground``
 3. Copy part of htaccess from there to your htaccess or vhost configuration.
 4. Copy the example ``webp.php`` to your DocumentRoot folder. Change the path to vendor folder to your needs.
