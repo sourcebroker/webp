@@ -28,7 +28,7 @@ RewriteCond %{HTTP_ACCEPT} image/webp
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteCond %{REQUEST_FILENAME}.webp !-f
 RewriteCond %{QUERY_STRING} !(^|&)processing(&|$)
-RewriteRule ^(.*)\.(jpe?g|png)$ webp-on-demand.php?secret=160377682374520 [NC,L]
+RewriteRule ^(.*)\.(jpe?g|png)$ webp-on-demand.php [NC,L]
 </IfModule>
 ###
 ### WEBP support end
