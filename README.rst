@@ -33,8 +33,6 @@ How to test?
 ++++++++++++
 
 1. Go into Network tab in Chrome DevTools. When you refresh website you should see jpg/png files being redirected to the
-same url but with ``?processing`` parameter.
-
+   same url but with ``?processing`` parameter.
 2. When you refresh the page second time some jpg/png should be already converted. Those will have ``webp`` in column ``Type``
-
 3. Check you DocumentRoot folder there should be ``__processed__/webp-images`` folder created with webp files.
