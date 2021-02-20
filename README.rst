@@ -23,6 +23,7 @@ How to install ?
 ++++++++++++++++
 
 Go to folder ``Resources/WebpRedirectToOriginalAndConvertInBackground``
+
 1. Copy part of htaccess from there to your htaccess or vhost configuration.
 2. Copy the example ``webp-on-demand.php`` to your DocumentRoot folder. Change the path to vendor folder to your needs.
 3. Your webp files will be stored in separate folder in your DocumentRoot folder. By default its ``__processed__/webp-images``.
