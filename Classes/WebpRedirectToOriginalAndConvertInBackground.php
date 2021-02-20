@@ -23,7 +23,7 @@ class WebpRedirectToOriginalAndConvertInBackground
         $requestUriNoQueryString = explode('?', $_SERVER['REQUEST_URI'])[0];
         $sourceFile              = realpath($documentRoot . urldecode($requestUriNoQueryString));
         if (
-            strpos($sourceFile, __DIR__) === 0
+            strpos($sourceFile, $documentRoot) === 0
             && file_exists($sourceFile)
             && in_array(pathinfo($sourceFile, PATHINFO_EXTENSION), ['png', 'jpeg', 'jpg'])
         ) {
