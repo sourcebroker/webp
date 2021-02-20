@@ -25,11 +25,11 @@ How to install ?
 1. ``composer install sourcebroker/webp``
 2. Go to folder ``vendor/sourcebroker/webp/Resources/WebpRedirectToOriginalAndConvertInBackground``
 3. Copy part of htaccess from there to your htaccess or vhost configuration.
-4. Copy the example ``webp-on-demand.php`` to your DocumentRoot folder. Change the path to vendor folder to your needs.
+4. Copy the example ``webp.php`` to your DocumentRoot folder. Change the path to vendor folder to your needs.
 5. Your webp files will be stored in separate folder in your DocumentRoot folder. By default its ``_processed_/webp-images``.
-   You can change this folder by replacing ``_processed_/webp-images`` in ``.htaccess`` file and in ``webp-on-demand.php`` file.
+   You can change this folder by replacing ``_processed_/webp-images`` in ``.htaccess`` file and in ``webp.php`` file.
 6. If you open folder ``vendor/sourcebroker/webp/Resources/WebpRedirectToOriginalAndConvertInBackground/cms-specific`` you
-   will find there ``htaccess`` and ``webp-on-demand.php`` for specific CMSes like for examples TYPO3. The path to store files
+   will find there ``htaccess`` and ``webp.php`` for specific CMSes like for example TYPO3. The path to store files
    is there selected to best fit the CMS.
 
 How to test?

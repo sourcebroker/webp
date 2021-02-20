@@ -1,7 +1,7 @@
 ###
 ### NOTICE!!!
 ###  Replace "/_processed_/webp-images" with the path in DocumentRoot where you want the webp images to be stored.
-### This value must be the same as "folderInDocumentRootToSaveWebp" in webp-on-demand.php
+### This value must be the same as "folderInDocumentRootToSaveWebp" in webp.php
 ###
 
 
@@ -28,7 +28,7 @@ RewriteCond %{HTTP_ACCEPT} image/webp
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteCond %{REQUEST_FILENAME}.webp !-f
 RewriteCond %{QUERY_STRING} !(^|&)processing(&|$)
-RewriteRule ^(.*)\.(jpe?g|png)$ webp-on-demand.php [NC,L]
+RewriteRule ^(.*)\.(jpe?g|png)$ webp.php [NC,L]
 </IfModule>
 ###
 ### WEBP support end
