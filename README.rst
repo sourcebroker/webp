@@ -28,6 +28,9 @@ How to install ?
 4. Copy the example ``webp-on-demand.php`` to your DocumentRoot folder. Change the path to vendor folder to your needs.
 5. Your webp files will be stored in separate folder in your DocumentRoot folder. By default its ``_processed_/webp-images``.
    You can change this folder by replacing ``_processed_/webp-images`` in ``.htaccess`` file and in ``webp-on-demand.php`` file.
+6. If you open folder ``vendor/sourcebroker/webp/Resources/WebpRedirectToOriginalAndConvertInBackground/cms-specific`` you
+   will find there ``htaccess`` and ``webp-on-demand.php`` for specific CMSes like for examples TYPO3. The path to store files
+   is there selected to best fit the CMS.
 
 How to test?
 ++++++++++++
