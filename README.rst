@@ -9,8 +9,8 @@ What does it do?
 This library is short scenarios of working examples for webp on demand which use rosell-dk/webp-convert in background.
 There will be two scenarios:
 
-1) first call to image which has no webp version yet will redirect to original source and run webp image converter in background
-2) first call to image which has no webp version yet will stream original source and run webp image converter in background
+1) call to image which has no webp version yet will redirect to original source and run webp image converter in background
+2) call to image which has no webp version yet will stream original source and run webp image converter in background
 
 Next calls to jpg/png will return webp on apache rewrite level.
 
