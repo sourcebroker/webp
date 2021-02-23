@@ -9,6 +9,7 @@ class WebpRedirectToOriginalAndConvertInBackground
      */
     private $options = [
         'folderInDocumentRootToSaveWebp' => '/_processed_/webp-images',
+        'cwebp-try-supplied-binary-for-os' => false,
         'lockFolderMode'                 => 0777,
     ];
 
