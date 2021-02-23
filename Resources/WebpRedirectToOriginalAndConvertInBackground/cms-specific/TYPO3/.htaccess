@@ -25,6 +25,7 @@ Header append Vary Accept env=webp
 
 # If webp does not exists yet then start processing and make redirect to original source with "?processing" parameter
 RewriteCond %{HTTP_ACCEPT} image/webp
+RewriteCond %{DOCUMENT_ROOT}/webp.php -f
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteCond %{REQUEST_FILENAME}.webp !-f
 RewriteCond %{QUERY_STRING} !(^|&)processing(&|$)
