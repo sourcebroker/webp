@@ -22,11 +22,17 @@ class WebpRedirectToOriginalAndConvertInBackground
     {
         $documentRoot = rtrim($_SERVER['DOCUMENT_ROOT'], '/');
         $requestUriNoQueryString = explode('?', $_SERVER['REQUEST_URI'])[0];
-        $sourceFile = realpath($documentRoot . urldecode($requestUriNoQueryString));
+        $sourceFileFromRealpath = realpath($documentRoot . urldecode($requestUriNoQueryString));
+        if (is_callable($this->options['sourceFileFromRealpathCallable'])) {
+            $sourceFileFromRealpathRelative = call_user_func($this->options['sourceFileFromRealpathCallable'], $sourceFileFromRealpath, $documentRoot);
+        } else {
+            $sourceFileFromRealpathRelative = str_replace($documentRoot, '', $sourceFileFromRealpath);
+        }
+
         if (
-            strpos($sourceFile, $documentRoot) === 0
-            && file_exists($sourceFile)
-            && in_array(pathinfo($sourceFile, PATHINFO_EXTENSION), ['png', 'jpeg', 'jpg'])
+            $sourceFileFromRealpathRelative === $requestUriNoQueryString
+            && file_exists($sourceFileFromRealpath)
+            && in_array(pathinfo($sourceFileFromRealpath, PATHINFO_EXTENSION), ['png', 'jpeg', 'jpg'])
         ) {
             ob_start();
             header("Location: ?processing", true, 307);
@@ -35,14 +41,14 @@ class WebpRedirectToOriginalAndConvertInBackground
             fastcgi_finish_request();
 
             $destinationRootFolder = $documentRoot . $this->options['folderInDocumentRootToSaveWebp'];
-            $destinationFile = $destinationRootFolder . substr($sourceFile, strlen($documentRoot));
+            $destinationFile = $destinationRootFolder . $sourceFileFromRealpathRelative;
 
             $lockDir = $destinationFile . '.lock';
             $destinationFileWebp = $destinationFile . '.webp';
 
             if (mkdir($lockDir, $this->options['lockFolderMode'], true) && is_dir($lockDir)) {
-                register_shutdown_function(static function () use ($sourceFile, $destinationFileWebp, $lockDir) {
-                    \WebPConvert\WebPConvert::convert($sourceFile, $destinationFileWebp, []);
+                register_shutdown_function(static function () use ($sourceFileFromRealpath, $destinationFileWebp, $lockDir) {
+                    \WebPConvert\WebPConvert::convert($sourceFileFromRealpath, $destinationFileWebp, []);
                     rmdir($lockDir);
                 });
             }
