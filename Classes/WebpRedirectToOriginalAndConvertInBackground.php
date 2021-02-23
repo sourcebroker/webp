@@ -10,7 +10,7 @@ class WebpRedirectToOriginalAndConvertInBackground
     private $options = [
         'folderInDocumentRootToSaveWebp' => '/_processed_/webp-images',
         'cwebp-try-supplied-binary-for-os' => false,
-        'lockFolderMode'                 => 0777,
+        'lockFolderMode' => 0777,
     ];
 
     public function __construct($userOptions = [])
@@ -20,9 +20,9 @@ class WebpRedirectToOriginalAndConvertInBackground
 
     public function start()
     {
-        $documentRoot            = rtrim($_SERVER['DOCUMENT_ROOT'], '/');
+        $documentRoot = rtrim($_SERVER['DOCUMENT_ROOT'], '/');
         $requestUriNoQueryString = explode('?', $_SERVER['REQUEST_URI'])[0];
-        $sourceFile              = realpath($documentRoot . urldecode($requestUriNoQueryString));
+        $sourceFile = realpath($documentRoot . urldecode($requestUriNoQueryString));
         if (
             strpos($sourceFile, $documentRoot) === 0
             && file_exists($sourceFile)
@@ -35,9 +35,9 @@ class WebpRedirectToOriginalAndConvertInBackground
             fastcgi_finish_request();
 
             $destinationRootFolder = $documentRoot . $this->options['folderInDocumentRootToSaveWebp'];
-            $destinationFile       = $destinationRootFolder . substr($sourceFile, strlen($documentRoot));
+            $destinationFile = $destinationRootFolder . substr($sourceFile, strlen($documentRoot));
 
-            $lockDir             = $destinationFile . '.lock';
+            $lockDir = $destinationFile . '.lock';
             $destinationFileWebp = $destinationFile . '.webp';
 
             if (mkdir($lockDir, $this->options['lockFolderMode'], true) && is_dir($lockDir)) {
