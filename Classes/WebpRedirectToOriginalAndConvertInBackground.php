@@ -20,7 +20,7 @@ class WebpRedirectToOriginalAndConvertInBackground
 
     public function start()
     {
-        $documentRoot = rtrim($_SERVER['DOCUMENT_ROOT'], '/');
+        $documentRoot = realpath(rtrim($_SERVER['DOCUMENT_ROOT'], '/'));
         $requestUriNoQueryString = explode('?', $_SERVER['REQUEST_URI'])[0];
         $sourceFileFromRealpath = realpath($documentRoot . urldecode($requestUriNoQueryString));
         if (is_callable($this->options['sourceFileFromRealpathCallable'])) {
