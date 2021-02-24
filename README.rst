@@ -14,7 +14,7 @@ There will be two scenarios:
 
 Next calls to jpg/png will return webp on apache rewrite level.
 
-For mow only first scenario is implemented.
+For now only first scenario is implemented.
 
 Webp images generated after redirect to original source
 -------------------------------------------------------
