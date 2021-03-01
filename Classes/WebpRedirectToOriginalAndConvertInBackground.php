@@ -9,8 +9,10 @@ class WebpRedirectToOriginalAndConvertInBackground
      */
     private $options = [
         'folderInDocumentRootToSaveWebp' => '/_processed_/webp-images',
-        'cwebp-try-supplied-binary-for-os' => false,
         'lockFolderMode' => 0777,
+        'webPConvertOptions' => [
+            'cwebp-try-supplied-binary-for-os' => false
+        ],
     ];
 
     public function __construct($userOptions = [])
@@ -49,8 +51,9 @@ class WebpRedirectToOriginalAndConvertInBackground
             $destinationFileWebp = $destinationFile . '.webp';
 
             if (mkdir($lockDir, $this->options['lockFolderMode'], true) && is_dir($lockDir)) {
-                register_shutdown_function(static function () use ($sourceFileFromRealpath, $destinationFileWebp, $lockDir) {
-                    \WebPConvert\WebPConvert::convert($sourceFileFromRealpath, $destinationFileWebp, []);
+                $webPConvertOptions = $this->options['webPConvertOptions'];
+                register_shutdown_function(static function () use ($sourceFileFromRealpath, $destinationFileWebp, $lockDir, $webPConvertOptions) {
+                    \WebPConvert\WebPConvert::convert($sourceFileFromRealpath, $destinationFileWebp, $webPConvertOptions);
                     rmdir($lockDir);
                 });
             }
