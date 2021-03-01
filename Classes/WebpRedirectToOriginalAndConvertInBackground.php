@@ -38,7 +38,9 @@ class WebpRedirectToOriginalAndConvertInBackground
             header("Location: ?processing", true, 307);
             ob_end_flush();
             flush();
-            fastcgi_finish_request();
+            if (function_exists('fastcgi_finish_request')) {
+                fastcgi_finish_request();
+            }
 
             $destinationRootFolder = $documentRoot . $this->options['folderInDocumentRootToSaveWebp'];
             $destinationFile = $destinationRootFolder . $sourceFileFromRealpathRelative;
