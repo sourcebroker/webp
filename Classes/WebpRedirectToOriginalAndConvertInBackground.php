@@ -34,7 +34,7 @@ class WebpRedirectToOriginalAndConvertInBackground
         if (
             $sourceFileFromRealpathRelative === $requestUriNoQueryString
             && file_exists($sourceFileFromRealpath)
-            && in_array(pathinfo($sourceFileFromRealpath, PATHINFO_EXTENSION), ['png', 'jpeg', 'jpg'])
+            && in_array(strtolower(pathinfo($sourceFileFromRealpath, PATHINFO_EXTENSION)), ['png', 'jpeg', 'jpg'])
         ) {
             ob_start();
             header("Location: ?processing", true, 307);
